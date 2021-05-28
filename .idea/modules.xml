@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/cc-mgmnt-system.iml" filepath="$PROJECT_DIR$/.idea/cc-mgmnt-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-api/cc-mgmnt-service/ccms.iml" filepath="$PROJECT_DIR$/springboot-api/cc-mgmnt-service/ccms.iml" />
+    </modules>
+  </component>
+</project>

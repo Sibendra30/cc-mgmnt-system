@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ValidatorTest {
 
-    /*@Test
+    @Test
     void testLuhnFailure() {
         assertFalse(Validator.luhnCheck("5444333322221110"));
     }
 
     @Test
     void testLuhnSuccess() {
-        assertTrue(Validator.luhnCheck("1358954993914435"));
-    }*/
+        assertTrue(Validator.luhnCheck("5536916332903409"));
+    }
 
 }

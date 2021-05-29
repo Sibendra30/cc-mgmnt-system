@@ -15,8 +15,7 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @Entity
 @Table
-@Getter
-@Setter
+@Data
 public class Card {
 
     @Column

@@ -4,7 +4,9 @@ public final class Validator {
 
     public static boolean luhnCheck(String ccNumber) {
         int sum=0;
-        boolean spOp = false;
+        boolean spOp = true;
+        int lastDigit = Integer.parseInt(ccNumber.substring(ccNumber.length() - 1));
+        ccNumber = new StringBuffer(ccNumber.substring(0, ccNumber.length() - 1)).reverse().toString();
         for(int i =0 ; i< ccNumber.length() ; i++) {
             int num = Integer.parseInt(String.valueOf(ccNumber.charAt(i)));
             if (spOp) {
@@ -16,6 +18,6 @@ public final class Validator {
             sum = sum + num;
             spOp = !spOp;
         }
-        return true; // sum % 10 == 0;
+        return true; //sum % 10 == lastDigit;
     }
 }

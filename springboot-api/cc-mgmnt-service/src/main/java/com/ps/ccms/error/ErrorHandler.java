@@ -15,6 +15,9 @@ public class ErrorHandler {
     @ExceptionHandler(value = {InvalidCCNumberException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public Map<String, String> resourceNotFoundException(Exception ex) {
-        return new HashMap(){{put("invalidCCNumber", "Invalid credit card number");}};
+        return new HashMap() {{
+            put("error", "invalidCCNumber");
+            put("message", "Invalid credit card number");
+        }};
     }
 }

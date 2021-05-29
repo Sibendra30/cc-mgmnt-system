@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,15 +23,27 @@ public class CreditCardController implements CreditCardAPI {
 
     @Override
     public ResponseEntity<List<Card>> getCards() {
-        return new ResponseEntity<>(creditCardService.getCards(), HttpStatus.OK);
+        List<Card> cards;
+        try {
+            cards = creditCardService.getCards();
+        } catch (Exception e) {
+            throw e;
+        }
+        return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Card> addNewCard(Card card) {
+        Card updatedCard;
         if (!Validator.luhnCheck(card.getCcNumber())) {
             throw new InvalidCCNumberException("Invalid credit card number");
         }
-        return new ResponseEntity<>( creditCardService.addNewCard(card), HttpStatus.CREATED);
+        try {
+            updatedCard = creditCardService.addNewCard(card);
+        } catch (Exception e) {
+            throw e;
+        }
+        return new ResponseEntity<>(updatedCard, HttpStatus.CREATED);
     }
 
 }

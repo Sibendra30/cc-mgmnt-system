@@ -16,8 +16,17 @@ public class ErrorHandler {
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public Map<String, String> resourceNotFoundException(Exception ex) {
         return new HashMap() {{
-            put("error", "invalidCCNumber");
-            put("message", "Invalid credit card number");
+            put("code", "invalidCCNumber");
+            put("errorMessage", "Invalid credit card number");
+        }};
+    }
+
+    @ExceptionHandler(value = {Exception.class})
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public Map<String, String> genericExceptionhandler(Exception ex) {
+        return new HashMap() {{
+            put("error", "internalServerError");
+            put("message", "Internal Server Error");
         }};
     }
 }

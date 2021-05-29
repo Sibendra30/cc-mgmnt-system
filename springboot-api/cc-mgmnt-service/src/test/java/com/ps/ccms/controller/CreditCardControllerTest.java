@@ -46,6 +46,16 @@ class CreditCardControllerTest {
     }
 
     @Test
+    void getCards500Status() throws Exception {
+        when(creditCardService.getCards()).thenThrow(new RuntimeException("Internal Server Error"));
+        mockMvc.perform(MockMvcRequestBuilders.get("/cards"))
+                .andExpect(MockMvcResultMatchers.status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()))
+                .andReturn();
+
+        verify(creditCardService, times(1)).getCards();
+    }
+
+    @Test
     void addCard() throws Exception {
         Card card = new Card("testName", "1358954993914435", 0.0, 900.0);
         when(creditCardService.addNewCard(eq(card))).thenReturn(new Card("testName", "1358954993914435", 0.0, 900.0));
@@ -55,4 +65,27 @@ class CreditCardControllerTest {
                 .andExpect(MockMvcResultMatchers.status().is(HttpStatus.CREATED.value()))
                 .andReturn();
     }
+
+    @Test
+    void addCard_ccLuhnCheckFailed() throws Exception {
+        Card card = new Card("testName", "1358954993914437", 0.0, 900.0);
+        // when(creditCardService.addNewCard(eq(card))).thenReturn(new Card("testName", "1358954993914435", 0.0, 900.0));
+        mockMvc.perform(MockMvcRequestBuilders.post("/cards")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(card)))
+                .andExpect(MockMvcResultMatchers.status().is(HttpStatus.BAD_REQUEST.value()))
+                .andReturn();
+    }
+
+    @Test
+    void addCard500Status() throws Exception {
+        Card card = new Card("testName", "1358954993914435", 0.0, 900.0);
+        when(creditCardService.addNewCard(eq(card))).thenThrow(new RuntimeException("Internal Server Error"));
+        mockMvc.perform(MockMvcRequestBuilders.post("/cards")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(card)))
+                .andExpect(MockMvcResultMatchers.status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()))
+                .andReturn();
+    }
+
 }

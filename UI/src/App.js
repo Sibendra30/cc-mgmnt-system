@@ -23,11 +23,7 @@ function App() {
     }
 
     const errHandler = (error) => {
-        if (error.status === 400) {
-            setErrMsg("There is something wrong with input value")
-        } else {
-            setErrMsg("There is something wrong. Please try again later")
-        }
+        setErrMsg("There is something wrong. Please try again later");
     }
 
     return (

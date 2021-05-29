@@ -7,6 +7,11 @@ This is a spring boot based maven project. It contains below APIs:
 1. ***GET /cards***  - This API fetches all the cards available in system.
 2. ***POST /cards***  - This API adds a new card info into system.
 
+## Pre-requisite
+1. Jdk 1.8+
+2. Maven v3
+3. Docker (optional)
+
 ## Use below command to start springboot application on port 8083:
 
 mvn spring-boot:run

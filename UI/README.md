@@ -5,8 +5,11 @@
 1. Node v14+
 2. Docker (optional)
 
-## Start UI app - Below command will start the react app on port- http://localhost:3000
+## Start UI app
 npm start
 
-## Also Dockerfile can be used to build and image and run the application on docker
+## Access UI Application
+http://localhost:3000
+
+*** Also Dockerfile can be used to build and image and run the application on docker ***
 

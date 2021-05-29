@@ -15,7 +15,10 @@ This is a spring boot based maven project. It contains below APIs:
 ## Run Application
 mvn spring-boot:run
 
+## Access APIs
+http://localhost:8083
+
 ## Run Test
 mvn clean test
 
-## Also Dockerfile can be used to build and image and run the application on docker
+***Also Dockerfile can be used to build and image and run the application on docker ***

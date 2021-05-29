@@ -1,0 +1,76 @@
+openapi: 3.0.1
+info:
+  title: Credit Card management APIs
+  version: v0
+servers:
+  - url: http://localhost:8083
+    description: Generated server url
+paths:
+  /cards:
+    get:
+      tags:
+        - CreditCardAPI
+      operationId: getCards
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Card'
+    post:
+      tags:
+        - credit-card-controller
+      operationId: addNewCard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Card'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Card'
+components:
+  schemas:
+    Card:
+      required:
+        - ccNumber
+        - limit
+        - name
+      type: object
+      properties:
+        name:
+          pattern: "^[a-zA-Z0-9 ,.-]{1,40}$"
+          type: string
+        ccNumber:
+          pattern: "^[0-9]{16,19}$"
+          type: string
+        balance:
+          type: number
+          format: double
+        limit:
+          type: number
+          format: double

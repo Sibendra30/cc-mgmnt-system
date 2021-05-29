@@ -1,3 +1,5 @@
+*Author* : *Sibendra Pratap Singh ; spsingh23021991@gmail.com*
+
 # Getting Started with Credit Card Management System APIs
 
 This is a spring boot based maven project. It contains below APIs:

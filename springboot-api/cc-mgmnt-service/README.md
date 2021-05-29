@@ -12,8 +12,7 @@ This is a spring boot based maven project. It contains below APIs:
 2. Maven v3
 3. Docker (optional)
 
-## Use below command to start springboot application on port 8083:
-
+## Run Application
 mvn spring-boot:run
 
 ## Run Test

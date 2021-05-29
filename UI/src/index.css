@@ -19,3 +19,7 @@ code {
 .add-card > button {
   max-width: 300px;
 }
+
+.err-msg {
+  color: red;
+}

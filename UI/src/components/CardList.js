@@ -25,10 +25,15 @@ function CardList({cards}) {
 function Card ({cardData}) {
     return (<tr>
                 <td>{cardData.name}</td>
-                <td>{cardData.ccNumber}</td>
-                <td>{cardData.balance}</td>
-                <td>{cardData.limit}</td>
+                <td>{formatCard(cardData.ccNumber)}</td>
+                <td>{`£ ${cardData.balance.toFixed(2)}`}</td>
+                <td>{`£ ${cardData.limit.toFixed(2)}`}</td>
             </tr>);
+}
+
+const formatCard = (ccNumber = '') => {
+    let formattedRegex = ccNumber.match(/.{1,4}/g);
+    return formattedRegex.join(' ');
 }
 
 export default CardList;
